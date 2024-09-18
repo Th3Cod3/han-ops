@@ -1,3 +1,6 @@
 *.gz
 *.zip
+*.o
 main
+.vscode/
+ex02/display
