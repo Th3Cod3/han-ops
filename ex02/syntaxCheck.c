@@ -10,16 +10,22 @@
 #include <string.h>
 #include "syntaxCheck.h"
 
-
 // Test whether an argument is one character long and has the correct value (e,p,w):
-ErrCode TestType(char *printMethod) {
-  ErrCode fout = NO_ERR;
-  
-  // Add the missing code
-  
-  return fout;
-}
+ErrCode TestType(char *printMethod)
+{
+  if (TestChar(printMethod) != NO_ERR) {
+    return ERR_TYPE;
+  }
 
+  switch (printMethod[0]) {
+  case 'e':
+  case 'p':
+  case 'w':
+    return NO_ERR;
+  default:
+    return ERR_TYPE;
+  }
+}
 
 // Test whether an argument contains a non-negative number:
 ErrCode TestNr(char *numberOfTimes)
@@ -27,7 +33,7 @@ ErrCode TestNr(char *numberOfTimes)
   if (atoi(numberOfTimes) < 0) {
     return ERR_NR;
   }
-  
+
   return NO_ERR;
 }
 
@@ -37,6 +43,6 @@ ErrCode TestChar(char *printChar)
   if (strlen(printChar) > 1) {
     return ERR_CHAR;
   }
-  
+
   return NO_ERR;
 }
