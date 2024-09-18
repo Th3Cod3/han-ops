@@ -7,6 +7,7 @@
  ******************************************************************************/
 
 #include <stdlib.h>
+#include <string.h>
 #include "syntaxCheck.h"
 
 
@@ -31,10 +32,11 @@ ErrCode TestNr(char *numberOfTimes) {
 
 
 // Test whether an argument contains only one character:
-ErrCode TestChar(char *printChar) {
-  ErrCode fout = NO_ERR;
+ErrCode TestChar(char *printChar)
+{
+  if (strlen(printChar) > 1) {
+    return ERR_CHAR;
+  }
   
-  // Add the missing code
-  
-  return fout;
+  return NO_ERR;
 }
