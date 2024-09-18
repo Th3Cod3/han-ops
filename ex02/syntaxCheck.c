@@ -22,14 +22,14 @@ ErrCode TestType(char *printMethod) {
 
 
 // Test whether an argument contains a non-negative number:
-ErrCode TestNr(char *numberOfTimes) {
-  ErrCode fout = NO_ERR;
+ErrCode TestNr(char *numberOfTimes)
+{
+  if (atoi(numberOfTimes) < 0) {
+    return ERR_NR;
+  }
   
-  // Add the missing code
-  
-  return fout;
+  return NO_ERR;
 }
-
 
 // Test whether an argument contains only one character:
 ErrCode TestChar(char *printChar)
