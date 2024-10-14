@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <sys/resource.h>
 #include "displayFunctions.h"
 
 int main(int argc, char *argv[]) {
@@ -20,6 +21,7 @@ int main(int argc, char *argv[]) {
   int8_t niceIncr;
   int8_t totalChars;
   pid_t pid;
+  int currentPriority;
   char printMethod, printChar;
   ErrCode err;
 
@@ -36,8 +38,6 @@ int main(int argc, char *argv[]) {
 
     for (uint8_t iChild = 0; iChild < totalChars; iChild++) {
       printChar = argv[iChild + 4][0];
-      printf("\n%d %d %c\n", iChild, iChild*niceIncr, printChar);
-
       pid = fork();
       
       if (pid > 0) {
@@ -45,6 +45,9 @@ int main(int argc, char *argv[]) {
       }
 
       nice(iChild * niceIncr);
+
+      currentPriority = getpriority(PRIO_PROCESS, 0);
+      printf("\n%d %d %c\n", iChild, currentPriority, printChar);
 
       PrintCharacters(printMethod, numOfTimes, printChar);  // Print character printChar numOfTimes times using method printMethod
       break;
