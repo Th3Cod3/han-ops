@@ -15,12 +15,23 @@
 // Check the command-line parameters:
 ErrCode SyntaxCheck(int argc, char **argv) {
   ErrCode errCode = NO_ERR;
-  if(argc != NUM_OF_PARS) {
+  if(argc < MIN_NUM_OF_PARS) {
     errCode = ERR_PARS;
   } else {
     errCode = TestType(argv[1]);                        // Test whether argument 1 has the correct value (print type)
     if(errCode == NO_ERR) errCode = TestNr(argv[2]);    // Test whether argument 2 contains a positive integer (number of times)
-    if(errCode == NO_ERR) errCode = TestChar(argv[3]);  // Test whether argument 3 contains only one character (print character)
+    if(errCode == NO_ERR) errCode = TestNr(argv[3]);    // Test whether argument 3 contains a positive integer (nice increment)
+    if(errCode == NO_ERR) errCode = TestChar(argv[4]);  // Test whether argument 4 contains only one character (print character)
+
+    if (argc > 4) {
+      for (int i = 5; i < argc; i++) {
+        errCode = TestChar(argv[i]);
+
+        if (errCode != NO_ERR) {
+          break;
+        }
+      }
+    }
   }
   return errCode;
 }
@@ -29,13 +40,13 @@ ErrCode SyntaxCheck(int argc, char **argv) {
 void DisplayError(ErrCode errCode) {
   switch(errCode) {
   case ERR_PARS:
-    printf("\nNumber of command-line parameters is less than four.\n");
+    printf("\nNumber of command-line parameters is less than five.\n");
     break;
   case ERR_TYPE:
     printf("\nUnknown print type.\n");
     break;
   case ERR_NR:
-    printf("\nNumber of times is not a positive integer.\n");
+    printf("\nNumber of times or nice is not a positive integer.\n");
     break;
   case ERR_CHAR:
     printf("\nPrint character contains more than one character.\n");
@@ -45,10 +56,12 @@ void DisplayError(ErrCode errCode) {
   }
   
   printf("\nCorrect syntax:\n");
-  printf("  ./display <print type> <number of times> <print character>\n\n");
+  printf("  ./display <print type> <nice increment> <number of times> <char 1> [<char 2> ... [<char N>]]\n\n");
   printf("  first parameter: <print type>: e, p or w\n");
   printf("  second parameter: <number of times>: positive integer\n");
-  printf("  third parameter: <print character>: a single character\n");
+  printf("  third parameter: <nice increment>: positive integer\n");
+  printf("  fourth parameter: <char 1>: a single character\n");
+  printf("  optional N parameter: <char (2|N)>: a single character\n");
   printf("\n");  // Newline at end
 }
 

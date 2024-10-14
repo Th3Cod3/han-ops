@@ -23,8 +23,7 @@ int main(int argc, char *argv[]) {
   char printMethod, printChar;
   ErrCode err;
 
-  // err = SyntaxCheck(argc, argv);  // Check the command-line parameters
-  err = NO_ERR;
+  err = SyntaxCheck(argc, argv);  // Check the command-line parameters
 
   if(err != NO_ERR) {
     DisplayError(err);        // Print an error message
