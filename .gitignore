@@ -3,5 +3,7 @@
 *.o
 main
 .vscode/
-ex02/display
-ex03/display
+compile_commands.json
+display
+parent
+.cache/
