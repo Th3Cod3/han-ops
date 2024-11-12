@@ -17,12 +17,9 @@
 int main(int argc, char *argv[]) {
   nice(0);
 
-  unsigned long int numOfTimes;
   int8_t niceIncr;
   int8_t totalChars;
   pid_t pid;
-  int currentPriority;
-  char printMethod, printChar;
   ErrCode err;
 
   err = SyntaxCheck(argc, argv);  // Check the command-line parameters
@@ -30,16 +27,12 @@ int main(int argc, char *argv[]) {
   if(err != NO_ERR) {
     DisplayError(err);        // Print an error message
   } else {
-    printMethod = argv[1][0];;
-    numOfTimes = strtoul(argv[2], NULL, 10);  // String to unsigned long
     niceIncr = atoi(argv[3]);
     totalChars = argc - 4;
 
-
     for (uint8_t iChild = 0; iChild < totalChars; iChild++) {
-      printChar = argv[iChild + 4][0];
       pid = fork();
-      
+
       if (pid > 0) {
         continue;
       }

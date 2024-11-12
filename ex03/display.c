@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
     for (uint8_t iChild = 0; iChild < totalChars; iChild++) {
       printChar = argv[iChild + 4][0];
       pid = fork();
-      
+
       if (pid > 0) {
         continue;
       }

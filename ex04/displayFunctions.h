@@ -46,18 +46,4 @@ void DisplayError(ErrCode errCode);
   Output:		None
 */
 
-void PrintCharacters(char prType, unsigned long numberOfTimes, char prChar);
-/*
-  Input:    prType = printing method:
-            'e' = echo
-            'p' = printf
-            'w' = write
-            numberOfTimes = number of times the character should be printed
-            prChar = character to print
-  Precondition:	  input parameters should be correct
-  Function:	  prChar shall be printed to display numberOfTimes times
-  Postcondition:  prChar shall is on the display numberOfTimes times
-  Output:	  None
-*/
-
 #endif
