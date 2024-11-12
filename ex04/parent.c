@@ -46,10 +46,12 @@ int main(int argc, char *argv[]) {
 
       nice(iChild * niceIncr);
 
-      currentPriority = getpriority(PRIO_PROCESS, 0);
-      printf("\n%d %d %c\n", iChild, currentPriority, printChar);
+      int error = execl("../ex02/display", "display", argv[1], argv[2], argv[iChild + 4], NULL);
+      if (error == -1) {
+        perror("execl");
+        exit(EXIT_FAILURE);
+      }
 
-      PrintCharacters(printMethod, numOfTimes, printChar);  // Print character printChar numOfTimes times using method printMethod
       break;
     }
 
