@@ -26,6 +26,8 @@ int main() {
     return 1;
   }
 
+  printf("My PID is %d\n", getpid());
+
   while (1) {
     write(1, &number, 1);
 
