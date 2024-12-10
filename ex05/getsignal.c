@@ -14,7 +14,7 @@ static void handler(int signum) {
   }
 }
 
-int main() {
+int main(void) {
   struct sigaction sa;
 
   sa.sa_handler = handler;
