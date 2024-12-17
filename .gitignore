@@ -9,3 +9,5 @@ parent
 .cache/
 ex05/getsignal
 ex05/sendsignal
+ex06/getsignal_sendpid
+ex06/sendsignal_getpid
