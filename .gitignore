@@ -6,6 +6,8 @@ main
 compile_commands.json
 display
 parent
+buildnumber.num
+depend
 .cache/
 ex05/getsignal
 ex05/sendsignal
@@ -13,3 +15,4 @@ ex06/getsignal_sendpid
 ex06/sendsignal_getpid
 ex07/filter
 ex07/redirect
+ex08/queue
