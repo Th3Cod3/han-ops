@@ -12,3 +12,4 @@ ex05/sendsignal
 ex06/getsignal_sendpid
 ex06/sendsignal_getpid
 ex07/filter
+ex07/redirect
